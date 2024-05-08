@@ -1,0 +1,3 @@
+Player, movimiento Idle, moviento (X,-X,Y,-Y), Ataque, Muerte, Salta
+PowerUp, Bola de fuergo.
+Enemigos, Movimientos(X,-X,Y,-Y), Ataque, Muerte (Flam=)
