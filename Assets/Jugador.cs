@@ -7,26 +7,52 @@ public class Jugador : MonoBehaviour
     [SerializeField] float velocidadMovimiento;
     [SerializeField] float horizontal;
     [SerializeField] float vertical;
+    [SerializeField] float fuerzaSalto;
+    [SerializeField] bool saltoHabilitado;
+    [SerializeField] float saltoCoolDown;
     Animator anim;
    [SerializeField] int idle;
     // Start is called before the first frame update
     void Start()
     {
+        saltoHabilitado = true;
         anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        AnimacionYMovimiento();
+        AnimacionYMovimientos();
 
 
 
     }
 
 
-    void AnimacionYMovimiento()
+    void AnimacionYMovimientos()
     {
+        //Ataque
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+
+        }
+
+        //Salto
+        if(Input.GetKeyDown(KeyCode.Space) && saltoHabilitado)
+        {
+            saltoHabilitado = false;
+            StartCoroutine(ActivarSalto());      
+        }
+        IEnumerator ActivarSalto()
+        {
+            anim.SetBool("Saltar", true);
+            Rigidbody2D rbJugador = GetComponent<Rigidbody2D>();
+            rbJugador.AddForce(transform.up * fuerzaSalto, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(saltoCoolDown);
+            saltoHabilitado = true;
+        }
+
+        //Movimiento
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
@@ -34,39 +60,56 @@ public class Jugador : MonoBehaviour
 
         transform.Translate(movePlayer);
 
-        if(Input.GetKeyUp(KeyCode.W))
-        {
-
-        }
         if (Input.GetKeyUp(KeyCode.D))
         {
-            anim.SetInteger("Idle", 1);
+            anim.SetInteger("WalkX", 0);
+            idle = 1;
+            anim.SetInteger("Idle", idle);
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
-
+            anim.SetInteger("WalkX", 0);
+            idle = 2;
+            anim.SetInteger("Idle", idle);
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            anim.SetInteger("WalkY", 0);
+            idle = 3;
+            anim.SetInteger("Idle", idle);
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
-
+            anim.SetInteger("WalkY", 0);
+            idle = 4;
+            anim.SetInteger("Idle", idle);
         }
 
-        if (horizontal > 0)
+        if (Input.GetKey(KeyCode.D))
         {
-            anim.SetInteger("WalkX", Mathf.RoundToInt(horizontal));
-            anim.SetInteger("Idle", 0);
+            anim.SetInteger("WalkX", 1);
+            idle = 0;
+            anim.SetInteger("Idle", idle);
         }
-        else
+        if (Input.GetKey(KeyCode.A))
         {
-            anim.SetInteger("WalkX", Mathf.FloorToInt(horizontal));
+            anim.SetInteger("WalkX", -1);
+            idle = 0;
+            anim.SetInteger("Idle", idle);
         }
-        if (vertical > 0)
+        if (Input.GetKey(KeyCode.W))
         {
-            anim.SetInteger("WalkY", Mathf.RoundToInt(vertical));
+            anim.SetInteger("WalkY", 1);
+            idle = 0;
+            anim.SetInteger("Idle", idle);
         }
-        else
+        if (Input.GetKey(KeyCode.S))
         {
-            anim.SetInteger("WalkY", Mathf.FloorToInt(vertical));
+            anim.SetInteger("WalkY", -1);
+            idle = 0;
+            anim.SetInteger("Idle", idle);
         }
+        
+        
     }
 }
