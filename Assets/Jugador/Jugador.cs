@@ -11,7 +11,10 @@ public class Jugador : MonoBehaviour
     [SerializeField] bool saltoHabilitado;
     [SerializeField] float saltoCoolDown;
     Animator anim;
-   [SerializeField] int idle;
+    [SerializeField] int idle;
+
+    [SerializeField] float vidaJugador; public float GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +26,6 @@ public class Jugador : MonoBehaviour
     void Update()
     {
         AnimacionYMovimientos();
-
-
 
     }
 
