@@ -2759,7 +2759,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &679406291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2789,7 +2789,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2823,7 +2823,12 @@ MonoBehaviour:
   fuerzaSalto: 5
   saltoHabilitado: 0
   saltoCoolDown: 2
+  ataqueAnimacionTime: 1
+  kunaiFuerzaDisparo: 20
   idle: 0
+  kunai: {fileID: 8967041100706667672, guid: e3ee7a0e434f3d847b3589dcc037d0df, type: 3}
+  kunaiRot: {x: 0, y: 0, z: 0, w: 0}
+  vidaJugador: 5
 --- !u!95 &679406293
 Animator:
   serializedVersion: 5

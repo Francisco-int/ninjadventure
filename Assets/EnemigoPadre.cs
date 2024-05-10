@@ -9,12 +9,15 @@ public abstract class EnemigoPadre : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] Vector2 playerPos;
     [SerializeField] bool irAtacar;
+    [SerializeField] Vector2 enemigoPos;
+    [SerializeField] Jugador jugador;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        playerPos = GameObject.Find("Player").GetComponent<Vector2>(); 
+        playerPos = GameObject.Find("Player").GetComponent<Vector2>();
+       
     }
 
     // Update is called once per frame
