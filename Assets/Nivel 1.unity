@@ -1950,7 +1950,7 @@ GameObject:
   - component: {fileID: 484192837}
   - component: {fileID: 484192836}
   m_Layer: 0
-  m_Name: Idle_0
+  m_Name: Lionboy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4981,7 +4981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208217122}
   m_Layer: 0
-  m_Name: Lionboy
+  m_Name: Lionboypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5915,7 +5915,10 @@ MonoBehaviour:
   cortaDistancia: 0
   enemigoPos: {x: 0, y: 0}
   jugador: {fileID: 679406292}
-  detecionJugador: {fileID: 1603201776}
+  xJugador: 0
+  yJugador: 0
+  xEnemigo: 0
+  yEnemigo: 0
 --- !u!50 &1603201774
 Rigidbody2D:
   serializedVersion: 4
