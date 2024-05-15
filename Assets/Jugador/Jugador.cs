@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Jugador : Timers
 {
-    [SerializeField] float velocidadMovimiento;
-    [SerializeField] float horizontal;
-    [SerializeField] float vertical;
+    [SerializeField] float vidaJugador;
+    [SerializeField] float velocidadMovimiento;   
     [SerializeField] float fuerzaSalto;
     [SerializeField] bool saltoHabilitado;
     [SerializeField] float saltoCoolDown;
-    Animator anim;
-    [SerializeField] float ataqueAnimacionTime;
     [SerializeField] float kunaiFuerzaDisparo;
-    [SerializeField] int idle;
-    [SerializeField] GameObject kunai;
-    [SerializeField] Quaternion kunaiRot;
-    [SerializeField] float vidaJugador; public float GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
+    float horizontal;
+    float vertical;
+    Animator anim;
+    int idle;
+    GameObject kunai;
+    Quaternion kunaiRot;
+     public float GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,8 @@ public class Jugador : Timers
     }
 
 
-    void AnimacionYMovimientos()
+    void AnimacionYMovimientos() //Esta función abarca desde el movimiento del objeto;
+                                 //sus interacciones con los demas objetos y sus animaciones
     {
         //Ataque
         if(Input.GetKeyDown(KeyCode.V))
@@ -66,7 +67,7 @@ public class Jugador : Timers
          rbKunai.AddForce(newKunai.transform.right * kunaiFuerzaDisparo);
         }
 
-            //Salto
+            //void Salto
             if (Input.GetKeyDown(KeyCode.Space) && saltoHabilitado)
         {
             saltoHabilitado = false;
@@ -81,7 +82,7 @@ public class Jugador : Timers
             saltoHabilitado = true;
         }
 
-        //Movimiento
+        //void Movimiento
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
