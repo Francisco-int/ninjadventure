@@ -26,7 +26,7 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     float yJugador;
     float xEnemigo;
     float yEnemigo;
-    public float GTvidaEnemigo { get { return vidaEnemigo; } set { vidaEnemigo -= value; } }
+    public int GTvidaEnemigo { get { return vidaEnemigo; } set { vidaEnemigo -= value; } }
 
     // Start is called before the first frame update
     void Start()
