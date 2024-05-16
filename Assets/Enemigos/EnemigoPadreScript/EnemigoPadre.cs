@@ -4,29 +4,29 @@ using UnityEngine;
 
 public abstract class EnemigoPadre : MonoBehaviour
 {
-    [SerializeField] float velocidadEnemgio;
-    [SerializeField] float posicionIdle;
-    [SerializeField] float atacarOtraVez;
-    [SerializeField] float dañoDelEnemigo;
-    public Animator anim;
-    [SerializeField] Vector2 playerPos;
-    [SerializeField] bool irAtacar;
-    [SerializeField] bool Atacar;
-    [SerializeField] bool largaDistancia;
-    [SerializeField] bool cortaDistancia;
-    [SerializeField] Vector2 enemigoPos;
-    [SerializeField] Jugador jugador;
-    [SerializeField] float xJugador;
-    [SerializeField] float yJugador;
-    [SerializeField] float xEnemigo;
-    [SerializeField] float yEnemigo;
+    [SerializeField] protected int vidaEnemigo;
+    [SerializeField] protected float velocidadEnemgio;
+    float posicionIdle;
+    float atacarOtraVez;
+    [SerializeField] protected float dañoDelEnemigo;
+    Animator anim;
+    Vector2 playerPos;
+    bool irAtacar;
+    bool Atacar;
+    [SerializeField] protected bool largaDistancia; //Esto sirve para declarar si un
+                                                    //enemigo atacara a corta(false) o larga(true) ditancia
+    Vector2 enemigoPos;
+    Jugador jugador;
+    float xJugador;
+    float yJugador;
+    float xEnemigo;
+    float yEnemigo;
 
     // Start is called before the first frame update
     void Start()
     {
         jugador = GameObject.Find("Jugador").GetComponent<Jugador>();
-        anim = GetComponent<Animator>();
-       
+        anim = GetComponent<Animator>();     
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public abstract class EnemigoPadre : MonoBehaviour
         
     }
 
-    void MovimientoEnemigos()
+   protected void MovimientoEnemigos() //Movimiento del enemigo hacia el jugador con animaciones
     {
         
         if (playerPos.x > enemigoPos.x)
@@ -64,12 +64,14 @@ public abstract class EnemigoPadre : MonoBehaviour
         transform.Translate(playerPos * Time.deltaTime * velocidadEnemgio);
 
     }
-    void Ataque()
+    void Ataque() //Esto realizara la animación y el intercambio de valores para el daño que recibe el jugador
     {
         DirecionAtaque();
         jugador.GTvidaJugador = dañoDelEnemigo;
         StartCoroutine(AtaqueCoolDownAnimation());
     }
+
+
     IEnumerator AtaqueCoolDownAnimation()
     {
 
@@ -84,7 +86,7 @@ public abstract class EnemigoPadre : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) //Al colisionar con el player empezar a atacar y no perseguir
     {
         Debug.Log("Colicion");
         if (collision.gameObject.GetComponent<Jugador>() && largaDistancia!)
@@ -94,12 +96,12 @@ public abstract class EnemigoPadre : MonoBehaviour
             Ataque();        
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision) //Si sale de la colición empezar a perseguir
     {
         Atacar = false;
         irAtacar = true;  
     } 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider) //Detecta al player a una cierta distancia y lo empiza a perseguir
     {
         Debug.Log("Trigger");
         if (collider.gameObject.GetComponent<Jugador>() && largaDistancia!)
@@ -138,9 +140,9 @@ public abstract class EnemigoPadre : MonoBehaviour
         }
         Debug.Log("Animacion Ataque");
         
-    }
+    } 
 
 
-    protected abstract void LanzarBolaFuego();
+    protected abstract void LanzarBolaFuego(); 
 
 }

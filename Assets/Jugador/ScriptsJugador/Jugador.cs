@@ -73,7 +73,7 @@ public class Jugador : Timers
             saltoHabilitado = false;
             StartCoroutine(ActivarSalto());      
         }
-        IEnumerator ActivarSalto()
+        IEnumerator ActivarSalto() //Salto del Jugador
         {
             anim.SetBool("Saltar", true);
             Rigidbody2D rbJugador = GetComponent<Rigidbody2D>();
