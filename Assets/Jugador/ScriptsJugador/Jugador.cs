@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Jugador : MonoBehaviour
 {
     [SerializeField]protected int vidaJugador;
-    [SerializeField] float velocidadMovimiento;   
+    [SerializeField] protected int dañoDelJugador;
+    [SerializeField]protected float velocidadMovimiento;   
     [SerializeField] float fuerzaSalto;
     bool saltoHabilitado;
     [SerializeField] float saltoCoolDown;
