@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class Jugador : Timers
     [SerializeField] float vidaJugador;
     [SerializeField] float velocidadMovimiento;   
     [SerializeField] float fuerzaSalto;
-    [SerializeField] bool saltoHabilitado;
+    bool saltoHabilitado;
     [SerializeField] float saltoCoolDown;
     [SerializeField] float kunaiFuerzaDisparo;
     float horizontal;
@@ -39,6 +40,7 @@ public class Jugador : Timers
         //Ataque
         if(Input.GetKeyDown(KeyCode.V))
         {
+            
             switch (idle)
             {
                 case 1:
@@ -146,5 +148,12 @@ public class Jugador : Timers
         }
         
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if (Ataque y colision enemigo)
+        {
+            //Llamara al metodo RecibirDaño del EnemgioPadre pasandole un valor(la cantidad de daño)
+        }
     }
 }

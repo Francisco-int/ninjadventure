@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LionOrange : MonoBehaviour
+public class LionOrange : EnemigoPadre
 {
     // Start is called before the first frame update
     void Start()
@@ -15,4 +15,17 @@ public class LionOrange : MonoBehaviour
     {
         
     }
+    protected override void RecibirDaño(int cantidadDeDaño)
+    {
+        //Hara la cuenta que dara la vida que le queda al enemigo
+    }
+    protected override void Huir()
+    {
+        //Tendra su propia condición de huida
+    }
+    protected override void Drop()
+    {
+        //Tendra sus propios objetos que soltar
+    }
+
 }
