@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class Jugador : Timers
+public class Jugador : MonoBehaviour
 {
     [SerializeField] float vidaJugador;
     [SerializeField] float velocidadMovimiento;
     [SerializeField] float fuerzaSalto;
-    [SerializeField] bool saltoHabilitado;
-    [SerializeField] float saltoCoolDown;
+    bool saltoHabilitado;
+    float saltoCoolDown;
     [SerializeField] float kunaiFuerzaDisparo;
     float horizontal;
     float vertical;
@@ -16,6 +16,7 @@ public  class Jugador : Timers
     int idle;
     GameObject kunai;
     Quaternion kunaiRot;
+    protected List<GameObject> inventario;
     public float GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
     
     // Start is called before the first frame update
@@ -29,14 +30,19 @@ public  class Jugador : Timers
     void Update()
     {
         AnimacionYMovimientos();
-
+        
     }
 
 
         void AnimacionYMovimientos() //Esta función abarca desde el movimiento del objeto;
                                      //sus interacciones con los demas objetos y sus animaciones
         {
-            //Ataque
+
+
+
+
+
+            //Ataques: Esta sección se encarga de los ataques basicos del jugador
             if (Input.GetKeyDown(KeyCode.V))
             {
                 switch (idle)
@@ -67,7 +73,7 @@ public  class Jugador : Timers
                 rbKunai.AddForce(newKunai.transform.right * kunaiFuerzaDisparo);
             }
 
-            //void Salto
+            //Salto: Esta sección se encarga del salto de jugador
             if (Input.GetKeyDown(KeyCode.Space) && saltoHabilitado)
             {
                 saltoHabilitado = false;
@@ -82,7 +88,7 @@ public  class Jugador : Timers
                 saltoHabilitado = true;
             }
 
-            //void Movimiento
+            //Movimiento: esta sección se encarga de mover el objeto y reproducir las animaciones
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
 
@@ -145,7 +151,13 @@ public  class Jugador : Timers
                 anim.SetInteger("Idle", idle);
             }
 
+            
 
         }
+    void Movimiento()
+    {
+
+    }
+
     }
 

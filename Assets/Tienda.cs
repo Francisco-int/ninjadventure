@@ -17,7 +17,7 @@ public class Tienda : Jugador //Es hija del jugador para que los intercambios
     void Update()
     {
         
-    }//
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if(colisiona con jugador)

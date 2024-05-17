@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class FireScript :  PowerUps
 {
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Collect();
-    }
+    
 }
