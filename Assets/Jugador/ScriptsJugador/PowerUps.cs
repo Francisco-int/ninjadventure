@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUps : Jugador
+public class PowerUps : Jugador //Esta clase se encargara de los PowerUps de jugador
 {
     [SerializeField] int dañoBolaDeFuego;
     [SerializeField] int dañoPinchoHielo;
@@ -30,13 +30,7 @@ public class PowerUps : Jugador
             //Esto activara el metodo PowerUp
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //if(colisiona con enemigo)
-        {
-            //Le resta vida al enemigo segun dañoPowerUp
-        }
-    }
+
     void PowerUp()
     {
         //Esto comprobara el valor del powerUpSelector y activara cierto PowerUp.
@@ -49,11 +43,11 @@ public class PowerUps : Jugador
     void BolaDeFuego()
     {
         //Esto instanciara el objeto BolaDeFuego en la variable proyectilPowerUp(0)
-        //y le sacara del iventario del jugador el objeto que le permite activar el PowerUp
+        //y le sacara del iventario del jugador, usando la herencia, el objeto que le permite activar el PowerUp
     }
     void PinchoHielo()
     {
         //Esto instanciara el objeto PinchoHielo en la variable proyectilPowerUp(1)
-        //y le sacara del iventario del jugador el objeto que le permite activar el PowerUp
+        //y le sacara del iventario del jugador, usando la herencia, el objeto que le permite activar el PowerUp
     }
 }
