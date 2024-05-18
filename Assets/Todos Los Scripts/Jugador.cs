@@ -45,8 +45,6 @@ public class Jugador : MonoBehaviour
 
         transform.Translate(movePlayer);
 
-
-
         if (Input.GetKeyUp(KeyCode.D))
         {
             anim.SetInteger("WalkX", 0);
@@ -101,6 +99,7 @@ public class Jugador : MonoBehaviour
             idle = 0;
             anim.SetInteger("Idle", idle);
         }
+
         //Salto: Esta sección se encarga del salto de jugador
         if (Input.GetKeyDown(KeyCode.Space) && saltoHabilitado)
         {
