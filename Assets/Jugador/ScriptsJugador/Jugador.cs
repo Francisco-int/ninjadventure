@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Jugador : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Jugador : MonoBehaviour
     Quaternion kunaiRot;
     protected int monedas;
     protected List<GameObject> inventario;
+    Slider barraVida;
     public float GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
     
     // Start is called before the first frame update
@@ -114,7 +116,7 @@ public class Jugador : MonoBehaviour
             saltoHabilitado = true;
         }
     }
-    void Ataque()   //Ataques: Esta sección se encarga de los ataques basicos del jugador
+    void Ataque()   //Ataques: Esta sección se encarga de los ataques basicos del jugador y de sacarle vida a los enemigos
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -145,6 +147,15 @@ public class Jugador : MonoBehaviour
             Rigidbody2D rbKunai = newKunai.GetComponent<Rigidbody2D>();
             rbKunai.AddForce(newKunai.transform.right * kunaiFuerzaDisparo);
         }
+    }
+
+    void UIMAnager()
+    {
+        //Este método ira actualizando la información, del personaje, que se le de al jugador en pantalla
+    }
+    void Curacion(int curar)
+    {
+        //Le suma a la vida del jugador el valor tranferido. 
     }
 }
 
