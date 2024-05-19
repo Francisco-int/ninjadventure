@@ -152,7 +152,7 @@ public class Jugador : MonoBehaviour
     {
         //Este método ira actualizando la información, del personaje, que se le de al jugador en pantalla
     }
-    void Curacion(int curar)
+    protected void Curacion(int curar)
     {
         //Le suma a la vida del jugador el valor tranferido. 
     }
