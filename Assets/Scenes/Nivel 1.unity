@@ -2816,6 +2816,7 @@ GameObject:
   - component: {fileID: 679406292}
   - component: {fileID: 679406291}
   - component: {fileID: 679406290}
+  - component: {fileID: 679406295}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Jugador
@@ -3000,6 +3001,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &679406295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679406288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51fada72be74684b950d011c031e415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageManager: {fileID: 976119951}
+  playerDamageAmount: 0
+  enemyDamageAmount: 5
 --- !u!4 &699050339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6543681725729164511, guid: 3d3f62d44c4412345bccd4e38517bf44, type: 3}
@@ -4313,6 +4329,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6543681725729164511, guid: 3d3f62d44c4412345bccd4e38517bf44, type: 3}
   m_PrefabInstance: {fileID: 298203352}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &976119950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976119952}
+  - component: {fileID: 976119951}
+  m_Layer: 0
+  m_Name: DamageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &976119951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976119950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579f5d3b4d655e04f84938027efa29f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &976119952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976119950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &984576887
 GameObject:
   m_ObjectHideFlags: 0
@@ -5788,9 +5848,10 @@ GameObject:
   - component: {fileID: 1603201774}
   - component: {fileID: 1603201775}
   - component: {fileID: 1603201776}
+  - component: {fileID: 1603201777}
   m_Layer: 0
   m_Name: Flam
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6016,6 +6077,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1603201777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603201769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51fada72be74684b950d011c031e415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageManager: {fileID: 976119951}
+  playerDamageAmount: 5
+  enemyDamageAmount: 0
 --- !u!4 &1643737804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6543681725729164511, guid: 3d3f62d44c4412345bccd4e38517bf44, type: 3}
@@ -8096,3 +8172,4 @@ SceneRoots:
   - {fileID: 1952038924}
   - {fileID: 1208217122}
   - {fileID: 2088426954}
+  - {fileID: 976119952}

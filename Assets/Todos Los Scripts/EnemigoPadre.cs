@@ -28,6 +28,9 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     float yEnemigo;
     public int GTvidaEnemigo { get { return vidaEnemigo; } set { vidaEnemigo -= value; } }
 
+
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +116,7 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
             Atacar = true;
             Ataque();        
         }
+
     }
     private void OnCollisionExit2D(Collision2D collision) //Si sale de la colición empezar a perseguir
     {

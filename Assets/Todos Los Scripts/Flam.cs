@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flam : EnemigoPadre
+public class Flam : EnemigoPadre, IDamageable
 {
 
   
@@ -36,5 +36,9 @@ public class Flam : EnemigoPadre
                            //metodo, unico para este personaje, en la clase padre/base.
     {
         //Lanza bola de fuego
+    }
+    public void TakeDamage(int damage)
+    {
+        // La lógica para que el enemigo reciba daño
     }
 }

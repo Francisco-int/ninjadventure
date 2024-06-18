@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Jugador : MonoBehaviour
+public class Jugador : MonoBehaviour, IDamageable
 {
     [SerializeField] float vidaJugador;
     [SerializeField] float velocidadMovimiento;
@@ -156,5 +156,10 @@ public class Jugador : MonoBehaviour
     {
         //Le suma a la vida del jugador el valor tranferido. 
     }
+    public void TakeDamage(int damage)
+    {
+        // Aquí la lógica para que el jugador reciba daño
+    }
+
 }
 
