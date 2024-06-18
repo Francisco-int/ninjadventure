@@ -2924,7 +2924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2dac307318829347aa7f53372f55076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaJugador: 5
+  vidaJugador: 0
   velocidadMovimiento: 2
   fuerzaSalto: 5
   kunaiFuerzaDisparo: 20
@@ -5849,6 +5849,7 @@ GameObject:
   - component: {fileID: 1603201775}
   - component: {fileID: 1603201776}
   - component: {fileID: 1603201777}
+  - component: {fileID: 1603201778}
   m_Layer: 0
   m_Name: Flam
   m_TagString: Enemigo
@@ -6092,6 +6093,19 @@ MonoBehaviour:
   damageManager: {fileID: 976119951}
   playerDamageAmount: 5
   enemyDamageAmount: 0
+--- !u!114 &1603201778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603201769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1eb72921a54f404c8d705e26eb996d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderVida: {fileID: 0}
 --- !u!4 &1643737804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6543681725729164511, guid: 3d3f62d44c4412345bccd4e38517bf44, type: 3}

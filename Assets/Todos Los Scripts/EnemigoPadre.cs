@@ -37,7 +37,6 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
         jugador = GameObject.Find("Jugador").GetComponent<Jugador>();
         anim = GetComponent<Animator>();
         irAtacar = false;
-        DamageHandler.updateHUD += CuerrentHealth;
 
     }
 

@@ -10,21 +10,8 @@ public class DamageHandler : MonoBehaviour
     public int playerDamageAmount;
     public int enemyDamageAmount;
 
-    public delegate void UpdateHUD();
-    public static UpdateHUD updateHUD;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Jugador"))
@@ -33,7 +20,7 @@ public class DamageHandler : MonoBehaviour
             if (damageable != null)
             {
                 damageManager.InflictDamage(damageable, playerDamageAmount);
-                updateHUD?.Invoke();
+               
                 Debug.Log("Daño inplementado al enemigo: " + playerDamageAmount);
             }
         }
@@ -44,7 +31,6 @@ public class DamageHandler : MonoBehaviour
             if (damageable != null)
             {
                 damageManager.InflictDamage(damageable, enemyDamageAmount);
-                updateHUD?.Invoke();
                 Debug.Log("Daño inplementado al jugador: " + enemyDamageAmount);
             }
         }

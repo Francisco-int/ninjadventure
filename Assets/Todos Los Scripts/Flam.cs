@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Flam : EnemigoPadre, IDamageable
 {
 
+    public static Action<int> enemyHit;
   
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,9 @@ public class Flam : EnemigoPadre, IDamageable
     }
     public void TakeDamage(int damage)
     {
+        vidaEnemigo -= damage;
+        enemyHit?.Invoke(vidaEnemigo);
         // La lógica para que el enemigo reciba daño
     }
+
 }
