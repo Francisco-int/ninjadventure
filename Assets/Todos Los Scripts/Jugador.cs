@@ -27,6 +27,7 @@ public class Jugador : MonoBehaviour, IDamageable
     {
         saltoHabilitado = true;
         anim = GetComponent<Animator>();
+        DamageHandler.updateHUD += UIMAnager;
     }
 
     // Update is called once per frame
@@ -151,6 +152,7 @@ public class Jugador : MonoBehaviour, IDamageable
     void UIMAnager()
     {
         //Este método ira actualizando la información, del personaje, que se le de al jugador en pantalla
+
     }
     protected void Curacion(int curar)
     {
@@ -160,6 +162,7 @@ public class Jugador : MonoBehaviour, IDamageable
     {
         // Aquí la lógica para que el jugador reciba daño
     }
+
 
 }
 

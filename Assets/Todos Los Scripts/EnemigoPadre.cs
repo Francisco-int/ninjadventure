@@ -37,6 +37,8 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
         jugador = GameObject.Find("Jugador").GetComponent<Jugador>();
         anim = GetComponent<Animator>();
         irAtacar = false;
+        DamageHandler.updateHUD += CuerrentHealth;
+
     }
 
     // Update is called once per frame
@@ -162,4 +164,10 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
         }
         Debug.Log("Animacion Ataque");        
     } 
+
+    void CuerrentHealth()
+    {
+        //Actualizara la vida actual del enemigo
+    }
+
 }
