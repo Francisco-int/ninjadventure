@@ -28,12 +28,16 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     float yEnemigo;
     public int GTvidaEnemigo { get { return vidaEnemigo; } set { vidaEnemigo -= value; } }
 
+
+   
+
     // Start is called before the first frame update
     void Start()
     {
         jugador = GameObject.Find("Jugador").GetComponent<Jugador>();
         anim = GetComponent<Animator>();
         irAtacar = false;
+
     }
 
     // Update is called once per frame
@@ -113,6 +117,7 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
             Atacar = true;
             Ataque();        
         }
+
     }
     private void OnCollisionExit2D(Collision2D collision) //Si sale de la colición empezar a perseguir
     {
@@ -158,4 +163,10 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
         }
         Debug.Log("Animacion Ataque");        
     } 
+
+    void CuerrentHealth()
+    {
+        //Actualizara la vida actual del enemigo
+    }
+
 }

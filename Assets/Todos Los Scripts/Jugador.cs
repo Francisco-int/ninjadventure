@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Jugador : MonoBehaviour
+public class Jugador : MonoBehaviour, IDamageable
 {
-    [SerializeField] float vidaJugador;
+    [SerializeField] int vidaJugador;
     [SerializeField] float velocidadMovimiento;
     [SerializeField] float fuerzaSalto;
     bool saltoHabilitado;
@@ -20,8 +21,11 @@ public class Jugador : MonoBehaviour
     protected int monedas;
     protected List<GameObject> inventario;
     Slider barraVida;
-    public float GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
-    
+    public int GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
+
+    public static Action<int> jugadorHit;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -152,9 +156,17 @@ public class Jugador : MonoBehaviour
     {
         //Este método ira actualizando la información, del personaje, que se le de al jugador en pantalla
     }
-    void Curacion(int curar)
+    protected void Curacion(int curar)
     {
         //Le suma a la vida del jugador el valor tranferido. 
     }
+    public void TakeDamage(int damage)
+    {
+        vidaJugador -= damage;
+        jugadorHit?.Invoke(vidaJugador);
+        // Aquí la lógica para que el jugador reciba daño
+    }
+
+
 }
 

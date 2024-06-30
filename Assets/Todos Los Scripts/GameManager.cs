@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Jugador jugador;
+    public Flam flam;
+
+    public DamageManager damageManager;
+
+    public int dañoJugador;
+    public int dañoEnemigo;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        damageManager.InflictDamage(jugador, dañoJugador);
+        damageManager.InflictDamage(flam, dañoEnemigo);
     }
 
     // Update is called once per frame
