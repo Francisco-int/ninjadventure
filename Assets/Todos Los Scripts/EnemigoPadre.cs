@@ -133,7 +133,7 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
             Ataque();       
         }
     }
-    void DirecionAtaque() //Controlador de animación
+    void DirecionAtaque() //Controlador de animación de ataques
     { 
         xJugador = jugador.transform.position.x;
         yJugador = jugador.transform.position.y;
