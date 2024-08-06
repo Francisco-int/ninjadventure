@@ -15,9 +15,8 @@ public class Flam : EnemigoPadre
     // Update is called once per frame
     void Update()
     {
-       
+        ActualizarEnemigo();
     }
-
     protected override void Huir()
     {
         //Tendra su propia condición de huida
@@ -28,7 +27,7 @@ public class Flam : EnemigoPadre
     }
     protected override void RecibirDaño(int cantidadDeDaño)
     {
-        //Hara la cuenta que dara la vida que le queda al enemigo
+        
     }
     void LanzarBolaFuego() //Este enemigo es el único que tiene un ataque
                            //a distancia lanzando un proyectil, mientras que los

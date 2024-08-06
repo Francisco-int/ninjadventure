@@ -13,7 +13,7 @@ public class LionBow : EnemigoPadre
     // Update is called once per frame
     void Update()
     {
-        PowerUpRound();
+        ActualizarEnemigo();
     }
     protected override void RecibirDaño(int cantidadDeDaño)
     {

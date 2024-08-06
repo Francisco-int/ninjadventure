@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya que servira como base o modelo para
                                                    //los comportamientos de los enemgios del juego
@@ -10,18 +11,17 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
 
     //Las que están en privado pero con [SerializeField] tienen esto ya que brindan infonmación
     //del enemgio, ademas de por si se quiere modificar esas variables del enemigo por default
-    [SerializeField] protected int vidaEnemigo; 
-    [SerializeField] protected float velocidadEnemigo;  
-    float posicionIdle;
-    float atacarOtraVez;
+    [SerializeField] protected int vidaEnemigo;
+    [SerializeField] protected float velocidadEnemigo;
+    [SerializeField] float posicionIdle;
+    [SerializeField] float atacarOtraVez;
     [SerializeField] protected int dañoDelEnemigo;
-    Animator anim;
+    [SerializeField] protected int dañoDelJugador;
+    [SerializeField] Animator anim;
     Vector2 playerPos;
-    bool irAtacar;
-    bool Atacar;
-    [SerializeField] bool largaDistancia; 
+    [SerializeField] bool Atacar;
     Vector2 enemigoPos;
-    Jugador jugador;
+    [SerializeField] Jugador jugador;
     float xJugador;
     float yJugador;
     float xEnemigo;
@@ -31,23 +31,36 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     // Start is called before the first frame update
     void Start()
     {
-        jugador = GameObject.Find("Jugador").GetComponent<Jugador>();
-        anim = GetComponent<Animator>();
-        irAtacar = false;
+        jugador = GameObject.Find("JugadorPoint").GetComponent<Jugador>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (irAtacar)
+        ActualizarEnemigo();
+    }
+    protected void ActualizarEnemigo()
+    {
+        if(Atacar == false)
         {
             MovimientoEnemigos();
-        }        
+        }
+        if(Atacar == true && Input.GetKeyDown(KeyCode.V))
+        {
+            Daño();
+        }
     }
-
-    void MovimientoEnemigos() //Movimiento del enemigo hacia el jugador con animaciones
+    void Daño()
     {
-        
+        vidaEnemigo -= dañoDelJugador;
+    }
+    protected void MovimientoEnemigos() //Movimiento del enemigo hacia el jugador con animaciones
+    {
+        Debug.Log("Movimiento");
+        Vector2 pos = jugador.transform.position - transform.position;
+
+        transform.Translate(pos * Time.deltaTime * velocidadEnemigo);
+
         if (playerPos.x > enemigoPos.x)
         {
             anim.SetInteger("Walk", 1);
@@ -65,13 +78,11 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
             anim.SetInteger("Walk", 4);
         }
 
-        transform.Translate(playerPos * Time.deltaTime * velocidadEnemigo);
 
     }
     void Ataque() //Esto realizara la animación y el intercambio de valores para el daño que reciba el jugador
     {
         DirecionAtaque();
-        jugador.GTvidaJugador = dañoDelEnemigo;
         StartCoroutine(AtaqueCoolDownAnimation());
     }
 
@@ -92,7 +103,8 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     IEnumerator AtaqueCoolDownAnimation() //Esto sirve para que no haga un daño continuo cuando
                                           //colisiona con el player, sino que haya daño coodinado con la animación de atacar
     {
-
+        Debug.Log("Ataque Corrutina");
+        jugador.GTvidaJugador = dañoDelEnemigo;
         yield return new WaitForSeconds(posicionIdle);
 
         anim.SetInteger("Ataque", 0);
@@ -106,33 +118,19 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
 
     private void OnCollisionEnter2D(Collision2D collision) //Al colisionar con el player empezar a atacar y no perseguir
     {
-        Debug.Log("Colicion");
-        if (collision.gameObject.GetComponent<Jugador>() && largaDistancia!)
+        if (collision.gameObject.GetComponent<Jugador>())
         {
-            irAtacar = false;
+            Debug.Log("Colicion: " + collision.gameObject.name);
             Atacar = true;
-            Ataque();        
+            Ataque();
+            Debug.Log("Ataque Colision");
         }
     }
     private void OnCollisionExit2D(Collision2D collision) //Si sale de la colición empezar a perseguir
     {
         Atacar = false;
-        irAtacar = true;  
     } 
-    private void OnTriggerEnter2D(Collider2D collider) //Detecta al player a una cierta distancia y lo empiza a perseguir
-    {
-        Debug.Log("Trigger");
-        if (collider.gameObject.GetComponent<Jugador>() && largaDistancia!)
-        {
-            irAtacar = true;
-        }
-        if (collider.gameObject.GetComponent<Jugador>() && largaDistancia)
-        {
-            irAtacar = false;
-            Atacar = true;
-            Ataque();       
-        }
-    }
+    
     void DirecionAtaque() //Controlador de animación de ataques
     { 
         xJugador = jugador.transform.position.x;

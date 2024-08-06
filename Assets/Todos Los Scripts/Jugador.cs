@@ -13,20 +13,20 @@ public class Jugador : MonoBehaviour
     [SerializeField] float kunaiFuerzaDisparo;
     float horizontal;
     float vertical;
-    Animator anim;
+   [SerializeField] Animator anim;
     int idle;
     GameObject kunai;
     Quaternion kunaiRot;
     protected int monedas;
     protected List<GameObject> inventario;
     Slider barraVida;
+   [SerializeField] bool ableAtaque;
     public float GTvidaJugador { get { return vidaJugador; } set { vidaJugador -= value; } }
     
     // Start is called before the first frame update
     void Start()
     {
         saltoHabilitado = true;
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -134,6 +134,7 @@ public class Jugador : MonoBehaviour
                     anim.SetInteger("Ataque", 4);
                     break;
             }
+            
         }
         if (Input.GetKeyUp(KeyCode.V))
         {

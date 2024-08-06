@@ -13,7 +13,7 @@ public class LionOrange : EnemigoPadre
     // Update is called once per frame
     void Update()
     {
-        
+        ActualizarEnemigo();
     }
     protected override void RecibirDaño(int cantidadDeDaño)
     {
