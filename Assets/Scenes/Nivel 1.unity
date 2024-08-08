@@ -7757,6 +7757,14 @@ PrefabInstance:
       propertyPath: jugador
       value: 
       objectReference: {fileID: 662599959}
+    - target: {fileID: 585536864932041494, guid: 0adccd6b83e20dc4b9b0386310742600, type: 3}
+      propertyPath: OnEnemyDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 585536864932041494, guid: 0adccd6b83e20dc4b9b0386310742600, type: 3}
+      propertyPath: OnEnemyDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1878926798374096061, guid: 0adccd6b83e20dc4b9b0386310742600, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.3

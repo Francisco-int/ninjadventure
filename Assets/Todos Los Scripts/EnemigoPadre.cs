@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
-
+using UnityEngine.Events;
 public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya que servira como base o modelo para
                                                    //los comportamientos de los enemgios del juego
 {
+    public UnityEvent OnEnemyDamage;
+    public UnityEvent OnEnemyAttack;
+    public UnityEvent OnEnemyDeath;
+
     //Protected: las variables en protected son las cuales son posibles que se modifiquen dentro de una clase hija
     //debido a tal situación en el juego, el valor de estas variables puede cambiar segun el enemigo
 
@@ -53,6 +57,8 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     void Daño()
     {
         vidaEnemigo -= dañoDelJugador;
+        OnEnemyDamage?.Invoke();
+        CheckEnemyDeath();
     }
     protected void MovimientoEnemigos() //Movimiento del enemigo hacia el jugador con animaciones
     {
@@ -84,6 +90,16 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     {
         DirecionAtaque();
         StartCoroutine(AtaqueCoolDownAnimation());
+        OnEnemyAttack?.Invoke();
+    }
+    protected void CheckEnemyDeath()
+    {
+        if (vidaEnemigo <= 0)
+        {
+            OnEnemyDeath?.Invoke();
+            Drop();
+            Destroy(gameObject);
+        }
     }
 
     protected virtual void Huir()
