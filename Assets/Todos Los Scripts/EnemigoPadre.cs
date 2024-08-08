@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
+<<<<<<< Updated upstream
 using UnityEngine.Events;
 public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya que servira como base o modelo para
                                                    //los comportamientos de los enemgios del juego
+=======
+
+public abstract class EnemigoPadre : MonoBehaviour, IinterfaceEnemyMethods //Esta clase es abstracta ya que servira como base o modelo para
+                                                                           //los comportamientos de los enemgios del juego
+>>>>>>> Stashed changes
 {
     public UnityEvent OnEnemyDamage;
     public UnityEvent OnEnemyAttack;
@@ -18,7 +24,7 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
     [SerializeField] protected int vidaEnemigo;
     [SerializeField] protected float velocidadEnemigo;
     [SerializeField] float posicionIdle;
-    [SerializeField] float atacarOtraVez;
+    [SerializeField] protected float atacarOtraVez;
     [SerializeField] protected int dañoDelEnemigo;
     [SerializeField] protected int dañoDelJugador;
     [SerializeField] Animator anim;
@@ -54,13 +60,21 @@ public abstract class EnemigoPadre : MonoBehaviour //Esta clase es abstracta ya 
             Daño();
         }
     }
-    void Daño()
+   public void Daño()
     {
         vidaEnemigo -= dañoDelJugador;
+<<<<<<< Updated upstream
         OnEnemyDamage?.Invoke();
         CheckEnemyDeath();
+=======
+        if(vidaEnemigo <= 0)
+        {
+            anim.SetBool("Dead", true);
+            Destroy(gameObject, 1);
+        }
+>>>>>>> Stashed changes
     }
-    protected void MovimientoEnemigos() //Movimiento del enemigo hacia el jugador con animaciones
+    public void MovimientoEnemigos() //Movimiento del enemigo hacia el jugador con animaciones
     {
         Debug.Log("Movimiento");
         Vector2 pos = jugador.transform.position - transform.position;

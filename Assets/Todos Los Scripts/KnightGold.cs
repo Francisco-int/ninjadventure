@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class KnightGold : EnemigoPadre
 {
+    [SerializeField] private Scriptableenemigo enemyData;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        vidaEnemigo = enemyData.Vida;
+        velocidadEnemigo = enemyData.Velocidad;
+        atacarOtraVez = enemyData.TimeAtaque;
+        dañoDelEnemigo = enemyData.DañoAtaque;
+        dañoDelJugador = enemyData.DañoRecibido;
     }
 
     // Update is called once per frame
